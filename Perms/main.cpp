@@ -5,8 +5,6 @@
 #include "orthoTransposition.hpp"
 #include "lexiOrder.hpp"
 
-using namespace std;
-
 bool is_equal(int original[], int data[], int size) {
     for (int i = 0; i < size; i++) {
         if (original[i] != data[i]) {
@@ -33,6 +31,6 @@ int main(int argc, const char * argv[]) {
         cnt++;
         // break;
     } while (!is_equal(original, data, size));
-    cout << cnt << endl;
+    std::cout << cnt << endl;
     return 0;
 }

@@ -68,3 +68,22 @@ void transfer(int data[], int size, map<int, int> middle) {
     }
     delete[] result;
 }
+
+long long get_rank(int data[], int size) { // 按排列获得序号(大概是递减进制)
+    long long s = 0;
+    for (int i = 0, t = 1; i < size; t *= (size - (i++)))
+        for (int j = 0; data[j] != i; j++)
+            s += (data[j] > i ? t : 0);
+    return s;
+}
+
+void gen_perm(long long rank, int size, int data[]) {
+    memset(data, -1, sizeof(int) * size);
+    for (int i = 0; i < size; rank /= size - (i++)) {
+        int pos = 0;
+        for (int left = rank % (size - i); left >= 0; pos++) {
+            if (data[pos] < 0) --left;
+        }
+        data[pos - 1] = i;
+    }
+} 
