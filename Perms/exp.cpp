@@ -55,5 +55,6 @@ int main() {
     srand(6655);
     init();
     PRINT_RESULT(next_perm_random);
+    PRINT_RESULT(next_perm_decreased);
     return 0;
 }

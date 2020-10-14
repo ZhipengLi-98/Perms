@@ -1,6 +1,6 @@
 #include "orthoTransposition.hpp"
 
-bool get_direction(int index, map<int, int> middle) {
+bool get_direction(int index, std::map<int, int> middle) {
     if (index != 2) {
         if (index % 2 == 0) {
             if ((middle[index - 1] + middle[index - 2]) % 2 == 1) {
@@ -17,7 +17,8 @@ bool get_direction(int index, map<int, int> middle) {
 }
 
 void next_perm_ortho(int data[], int size) {
-    map<int, int> pos, middle;
+    for (int i = 0; i < size; i++) ++data[i];
+    std::map<int, int> pos, middle;
     for (int i = 0; i < size; i++) {
         pos.insert({data[i], i});
     }
@@ -67,5 +68,6 @@ void next_perm_ortho(int data[], int size) {
             break;
         }
     }
+    for (int i = 0; i < size; i++) --data[i];
     return;
 }

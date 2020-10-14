@@ -21,17 +21,18 @@ void next_perm_lexi_swap(int data[], int size) {
                 index = i;
             }
         }
-        swap(data[break_index], data[index]);
+        std::swap(data[break_index], data[index]);
         int first = break_index + 1, last = size - 1;
         while (first < last) {
-            swap(data[first], data[last]);
+            std::swap(data[first], data[last]);
             first++, last--;
         }
     }
 }
 
 void next_perm_lexi(int data[], const int size) {
-    map<int, int> middle;
+    for (int i = 0; i < size; i++) ++data[i];
+    std::map<int, int> middle;
     for (int i = 1; i < size; i++) {
         middle.insert({i + 1, count_smaller_right(data, i - 1, size, data[i - 1])});
     }
@@ -67,5 +68,6 @@ void next_perm_lexi(int data[], const int size) {
         }
     }
     delete[] used;
+    for (int i = 0; i < size; i++) --data[i];
     return ;
 }

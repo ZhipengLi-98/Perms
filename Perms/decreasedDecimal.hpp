@@ -7,5 +7,6 @@
 #include "utils.hpp"
 
 void next_perm_decreased(int data[], int size);
+void next_perm_decreased_speedup(int data[], int size);
 
 #endif /* decreasedDecimal_hpp */

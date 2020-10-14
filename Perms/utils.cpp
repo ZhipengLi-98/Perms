@@ -10,8 +10,8 @@ int count_smaller_right(int data[], int begin, int end, int target) {
     return res;
 }
 
-map<int, int> get_middle(int data[], int size) {
-    map<int, int> pos, middle;
+std::map<int, int> get_middle(int data[], int size) {
+    std::map<int, int> pos, middle;
     for (int i = 0; i < size; i++) {
         pos.insert({data[i], i});
     }
@@ -22,7 +22,7 @@ map<int, int> get_middle(int data[], int size) {
 }
 
 // stride = 1 for incresedDecimal and -1 for decreasedDecimal
-void add(int size, map<int, int>& middle, int index, int stride, bool lexi) {
+void add(int size, std::map<int, int>& middle, int index, int stride, bool lexi) {
     int cnt = 0;
     while (true) {
         if (cnt == size - 1) {
@@ -41,7 +41,7 @@ void add(int size, map<int, int>& middle, int index, int stride, bool lexi) {
     return ;
 }
 
-void transfer(int data[], int size, map<int, int> middle) {
+void transfer(int data[], int size, std::map<int, int> middle) {
     int *result = new int[size];
     memset(result, -1, size * sizeof(int));
     for (int i = size; i > 1; i--) {
