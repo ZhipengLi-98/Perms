@@ -13,6 +13,14 @@ struct node {
     int direction;
 };
 
+struct discreteNode {
+    int data = 0;
+    int id = 0;
+    bool operator < (const discreteNode& a) const {
+        return data < a.data;
+    }
+};
+
 int count_smaller_right(int data[], int begin, int end, int target);
 map<int, int> get_middle(int data[], int size);
 // stride = 1 for incresedDecimal and -1 for decreasedDecimal
