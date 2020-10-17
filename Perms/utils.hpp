@@ -28,5 +28,7 @@ void transfer(int data[], int size, std::map<int, int> middle);
 // for 0,1,...,(n-1)
 long long get_rank(int data[], int size);
 void gen_perm(long long rank, int size, int data[]);
+long long inc2dec(long long rank, int size);
+long long dec2inc(long long rank, int size);
 
 #endif /* utils_hpp */

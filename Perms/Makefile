@@ -1,7 +1,7 @@
 exp: exp.o decreasedDecimal.o increasedDecimal.o lexiOrder.o orthoTransposition.o randomOrder.o shuffledOrder.o utils.o 
 	g++ exp.o decreasedDecimal.o increasedDecimal.o lexiOrder.o orthoTransposition.o randomOrder.o shuffledOrder.o utils.o -o exp
-main: main.o decreasedDecimal.o increasedDecimal.o lexiOrder.o orthoTransposition.o utils.o
-	g++ main.o decreasedDecimal.o increasedDecimal.o lexiOrder.o orthoTransposition.o utils.o -o main
+main: main.o decreasedDecimal.o increasedDecimal.o lexiOrder.o orthoTransposition.o shuffledOrder.o utils.o
+	g++ main.o decreasedDecimal.o increasedDecimal.o lexiOrder.o orthoTransposition.o shuffledOrder.o utils.o -o main
 decreasedDecimal.o: decreasedDecimal.cpp
 	g++ -c decreasedDecimal.cpp -O2 -std=c++11
 increasedDecimal.o: increasedDecimal.cpp

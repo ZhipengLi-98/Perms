@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 #define EXP_CNT 100000
-#define NODE_CNT 10
+#define NODE_CNT 12
 #define MAX_WEIGHT 1000
 #define MAX_STEP 100
 
@@ -36,6 +36,7 @@ inline double* tryout(void (*next_perm)(int[], int)) {
             res[step] += s;
             next_perm(p, NODE_CNT);
         }
+        // if (i % 1000 == 999) printf("%d / %d\n", i + 1, EXP_CNT);
     }
 
     for (int step = 0; step <= MAX_STEP; step++)
@@ -44,17 +45,23 @@ inline double* tryout(void (*next_perm)(int[], int)) {
 }
 
 #define PRINT_RESULT(func) \
-    printf(#func","); \
     double* res_##func = tryout(func); \
-    for (int i = 0; i <= MAX_STEP; i++) { \
+    printf(#func","); \
+    for (int i = 1; i <= MAX_STEP; i++) { \
         printf("%.3lf%s", res_##func[i], i==MAX_STEP?"":","); \
     } \
     puts("");
 
 int main() {
-    srand(6655);
+    srand(114514);
     init();
+    
+    PRINT_RESULT(next_perm_shuffled);
     PRINT_RESULT(next_perm_random);
+    PRINT_RESULT(next_perm_lexi);
+    PRINT_RESULT(next_perm_increased);
     PRINT_RESULT(next_perm_decreased);
+    PRINT_RESULT(next_perm_ortho);
+
     return 0;
 }
