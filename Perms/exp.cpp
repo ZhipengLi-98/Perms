@@ -2,7 +2,7 @@
 #include <cstdlib>
 
 #define EXP_CNT 100000
-#define NODE_CNT 12
+#define NODE_CNT 13
 #define MAX_WEIGHT 1000
 #define MAX_STEP 100
 
@@ -27,14 +27,14 @@ inline double* tryout(void (*next_perm)(int[], int)) {
     int p[NODE_CNT];
     int s;
     for (int i = 0; i < EXP_CNT; i++) {
-        for (int j = 0; j < NODE_CNT; j++) p[j] = j;
+        for (int j = 0; j < NODE_CNT - 1; j++) p[j] = j;
         res[0] += s = MAX_WEIGHT * NODE_CNT;
         for (int step = 1; step <= MAX_STEP; step++) {
-            int t = w[i][p[NODE_CNT - 1] - 1][p[0] - 1];
-            for (int j = 1; j < NODE_CNT; j++) t += w[i][p[j - 1]][p[j]];
+            int t = w[i][NODE_CNT - 1][p[0]] + w[i][p[NODE_CNT - 2]][NODE_CNT - 1];
+            for (int j = 0; j < NODE_CNT - 2; j++) t += w[i][p[j]][p[j + 1]];
             s = (t < s ? t : s);
             res[step] += s;
-            next_perm(p, NODE_CNT);
+            next_perm(p, NODE_CNT - 1);
         }
         // if (i % 1000 == 999) printf("%d / %d\n", i + 1, EXP_CNT);
     }

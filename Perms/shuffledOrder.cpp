@@ -13,8 +13,8 @@ inline void init(const int& size) {
     int p;
     for (p = size + 1; !is_prime(p); p++);
     step = 1;
-    int scale = p * 4 / 3;
-    for (step = 1; step * scale < fact; step *= p);
+    int thr = fact / (p + 1);
+    for (step = 1; step < thr; step *= p);
 }
 
 void next_perm_shuffled(int data[], int size) {
